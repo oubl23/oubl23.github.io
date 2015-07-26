@@ -1,0 +1,12 @@
+#+TITLE:       love swim
+#+AUTHOR:
+#+EMAIL:       dabao@DABAO
+#+DATE:        2015-07-26 Sun
+#+URI:         /blog/2015/07/26/love-swim
+#+KEYWORDS:    swim
+#+TAGS:        swim
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: good health
+
+* love swim
