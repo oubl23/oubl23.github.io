@@ -4,8 +4,8 @@
     <title>oubl23&#39;s world</title>
     <link>http://oubl23.github.io</link>
     <description>==============&gt; B WOOL</description>
-    <pubDate>Mon, 27 Jul 2015 00:08:20 CST</pubDate>
-    <lastBuildDate>Mon, 27 Jul 2015 00:08:20 CST</lastBuildDate>
+    <pubDate>Mon, 27 Jul 2015 00:16:12 CST</pubDate>
+    <lastBuildDate>Mon, 27 Jul 2015 00:16:12 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -14,6 +14,13 @@
       <description>swim</description>
       <pubDate>2015-07-27</pubDate>
       <guid>http://oubl23.github.io/blog/2015/07/28/swim</guid>
+    </item>
+    <item>
+      <title>swim2</title>
+      <link>http://oubl23.github.io/blog/2015/07/27/swim</link>
+      <description>swim</description>
+      <pubDate>2015-07-27</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/07/27/swim</guid>
     </item>
   </channel>
 </rss>
