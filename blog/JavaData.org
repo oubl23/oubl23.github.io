@@ -6,7 +6,7 @@
 #+KEYWORDS:    Java
 #+TAGS:        Java
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:
 * byte
 - 8位，有符号，以二进制补码的方式表示整数
