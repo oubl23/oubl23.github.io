@@ -7,6 +7,27 @@
 #+TAGS:        Java
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
-#+DESCRIPTION: java基本数据结构
-
+#+DESCRIPTION:
 * byte
+- 8位，有符号，以二进制补码的方式表示整数
+- byte类型用在大型数组中节约空间，主要代替整数，bypt只占int的1/4，默认0
+* short
+- 16位，以二进制补码表示整数
+- 只占int的1/2，默认0
+* int
+- 32位，以二进制补码表示整数
+- 默认0，一般整数变量默认位int
+* long
+- 64位，以二进制补码表示整数
+- 默认0
+* float
+- 32位
+* double
+- 64位
+* boolean
+- 只有true和false
+- 默认fasle
+* char
+- 16位unicode字符
+- 最小'\u0000'
+- 最大 '\uffff'

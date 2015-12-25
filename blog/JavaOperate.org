@@ -1,0 +1,19 @@
+#+TITLE:       Java运算符
+#+AUTHOR:      
+#+EMAIL:       dabao@DABAO
+#+DATE:        2015-12-26 Sat
+#+URI:         /blog/2015/12/25/java运算符
+#+KEYWORDS:    Java
+#+TAGS:        java
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: java运算符
+
+* 位运算
+* 条件运算（?:）
+* instanceOf运算符
+该运算符用于操作对象实例，检查对象是否是一个特定的类型（类类型或接口类型）
+#+BEGIN_SRC 
+String name = "james";
+boolean result = name instanceOf String
+#+END_SRC
