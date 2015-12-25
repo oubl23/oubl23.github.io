@@ -1,0 +1,11 @@
+#+TITLE:       java
+#+AUTHOR:      
+#+EMAIL:       dabao@DABAO
+#+DATE:        2015-12-26 Sat
+#+URI:         /blog/2015/12/26/java
+#+KEYWORDS:    <TODO: insert your keywords here>
+#+TAGS:        <TODO: insert your tags here>
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: java
+* java
