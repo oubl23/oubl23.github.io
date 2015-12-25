@@ -4,8 +4,8 @@
     <title>oubl23&#39;s world</title>
     <link>http://oubl23.github.io</link>
     <description>==============&gt; B WOOL</description>
-    <pubDate>Sat, 26 Dec 2015 04:50:36 CST</pubDate>
-    <lastBuildDate>Sat, 26 Dec 2015 04:50:36 CST</lastBuildDate>
+    <pubDate>Sat, 26 Dec 2015 04:53:24 CST</pubDate>
+    <lastBuildDate>Sat, 26 Dec 2015 04:53:24 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -28,13 +28,6 @@
       <description>java运算符</description>
       <pubDate>2015-12-26</pubDate>
       <guid>http://oubl23.github.io/blog/2015/12/25/java运算符</guid>
-    </item>
-    <item>
-      <title>java</title>
-      <link>http://oubl23.github.io/blog/2015/12/26/java</link>
-      <description>java</description>
-      <pubDate>2015-12-26</pubDate>
-      <guid>http://oubl23.github.io/blog/2015/12/26/java</guid>
     </item>
   </channel>
 </rss>
