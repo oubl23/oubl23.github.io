@@ -4,23 +4,30 @@
     <title>oubl23&#39;s world</title>
     <link>http://oubl23.github.io</link>
     <description>==============&gt; B WOOL</description>
-    <pubDate>Thu, 24 Dec 2015 09:13:00 CST</pubDate>
-    <lastBuildDate>Thu, 24 Dec 2015 09:13:00 CST</lastBuildDate>
+    <pubDate>Sat, 26 Dec 2015 04:45:45 CST</pubDate>
+    <lastBuildDate>Sat, 26 Dec 2015 04:45:45 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>Java基本数据结构</title>
       <link>http://oubl23.github.io/blog/2015/12/24/java基本数据结构</link>
-      <description>java基本数据结构</description>
-      <pubDate>2015-12-24</pubDate>
+      <description></description>
+      <pubDate>2015-12-26</pubDate>
       <guid>http://oubl23.github.io/blog/2015/12/24/java基本数据结构</guid>
     </item>
     <item>
-      <title>JavaModify</title>
+      <title>Java修饰符</title>
       <link>http://oubl23.github.io/blog/2015/12/25/javamodify</link>
-      <description>Modify</description>
-      <pubDate>2015-12-24</pubDate>
+      <description>Java修饰符号</description>
+      <pubDate>2015-12-26</pubDate>
       <guid>http://oubl23.github.io/blog/2015/12/25/javamodify</guid>
+    </item>
+    <item>
+      <title>Java运算符</title>
+      <link>http://oubl23.github.io/blog/2015/12/25/java运算符</link>
+      <description>java运算符</description>
+      <pubDate>2015-12-26</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/12/25/java运算符</guid>
     </item>
   </channel>
 </rss>

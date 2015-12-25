@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Java修饰符 - oubl23&#39;s world</title>
+    <title>Java运算符 - oubl23&#39;s world</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="description" content="Java修饰符号" />
-    <meta name="keywords" content="Modify" />
+    <meta name="description" content="java运算符" />
+    <meta name="keywords" content="Java" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
@@ -30,97 +30,24 @@
 
 <div>
 <div class="post">
-<h1>Java修饰符</h1>
+<h1>Java运算符</h1>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">访问修饰符</h2>
-<div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">default(默认)</h3>
-<div class="outline-text-3" id="text-1-1">
-<p>
-同一个包内可见
-</p>
+<h2 id="sec-1">位运算</h2>
 </div>
-</div>
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">private(私有的)</h3>
-<div class="outline-text-3" id="text-1-2">
-<p>
-同一个类中可见
-</p>
-</div>
-</div>
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">public(共有的)</h3>
-<div class="outline-text-3" id="text-1-3">
-<p>
-所有类可见
-</p>
-</div>
-</div>
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4">protected(受保护的)</h3>
-<div class="outline-text-3" id="text-1-4">
-<p>
-同一包内的类和所有子类可见
-</p>
-</div>
-</div>
-</div>
-
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">非访问控制符</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">Static(修饰符)</h3>
-<div class="outline-text-3" id="text-2-1">
-<ul class="org-ul">
-<li>创建类方法和类变量
-</li>
-<li>无论一个类实例化多少对象，他的静态变量只有一份copy
-</li>
-<li>静态方法不能使用非静态变量
-</li>
-</ul>
+<h2 id="sec-2">条件运算（?:）</h2>
 </div>
-</div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">Final</h3>
-<div class="outline-text-3" id="text-2-2">
-<ul class="org-ul">
-<li>修饰类,方法和变量
-</li>
-<li>修饰的类不能被继承，修饰的方法不能被继承类重新定义
-</li>
-<li>修饰变量为常量不可被修改
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">Abstract</h3>
-<div class="outline-text-3" id="text-2-3">
-<ul class="org-ul">
-<li>用来创建抽象类和抽象方法
-</li>
-<li>声明抽象类的唯一目的是为了将来对该类进行扩充
-</li>
-<li>一个类包含抽象方法，那一定要声明为抽象类，抽象类可以包含非抽象方法
-</li>
-<li>抽象类不能被实例化
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4">Synchronized and volatile</h3>
-<div class="outline-text-3" id="text-2-4">
-<ul class="org-ul">
-<li>主要用于线程编程
-</li>
-</ul>
-</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">instanceOf运算符</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+该运算符用于操作对象实例，检查对象是否是一个特定的类型（类类型或接口类型）
+</p>
+<pre class="example">
+String name = "james";
+boolean result = name instanceOf String
+</pre>
 </div>
 </div>
 
@@ -128,9 +55,9 @@
 </div>
     <div>
       <div class="post-meta">
-        <span title="post date" class="post-info">2015-12-24</span>
+        <span title="post date" class="post-info">2015-12-26</span>
         <span title="last modification date" class="post-info">2015-12-26</span>
-        <span title="tags" class="post-info"><a href="/tags/java/">Java</a></span>
+        <span title="tags" class="post-info"><a href="/tags/java/">java</a></span>
         <span title="author" class="post-info"></span>
       </div>
       <section>
@@ -138,8 +65,8 @@
         <div id="disqus_thread"></div>
         <script type="text/javascript">
           //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2015/12/25/javamodify";
-          var disqus_url = "http://oubl23.github.io/blog/2015/12/25/javamodify";
+          var disqus_identifier = "/blog/2015/12/25/java运算符";
+          var disqus_url = "http://oubl23.github.io/blog/2015/12/25/java运算符";
           var disqus_shortname = 'oubl23';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
