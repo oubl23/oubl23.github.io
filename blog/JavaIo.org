@@ -36,3 +36,12 @@ OutputStream f = new FileOutputStream('/home/dabao/java/1.txt');
 File f =  new File('/home/dabao/java/1.txt');
 OutputStream f = new FileOutputStream(f);
 #+END_SRC
+* Java目录
+/mkdir()/ /mkdirs()/
+#+BEGIN_SRC java
+String dirname = "/tmp/user";
+File d = new File(dirname);
+d.mkdirs();
+#+END_SRC
+* 读取目录
+*isDirectory()*
