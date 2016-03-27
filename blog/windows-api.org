@@ -3,8 +3,8 @@
 #+EMAIL:       oubaolong@MySHwoks-XFZ
 #+DATE:        2016-03-27 日
 #+URI:         /blog/2016/03/27/windows-api
-#+KEYWORDS:    windows api,gdi
-#+TAGS:        study
+#+KEYWORDS:    windows-api,gdi
+#+TAGS:        windows-api
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: learn windows api
@@ -51,3 +51,9 @@ switch (message){
 }
 return DefWindowProc(hwnd, message, wParam, lParam);
 #+END_SRC
+* WM_PAINT消息
+#+BEGIN_SRC 
+hdc = BeginPaint(hwnd, &ps);
+
+GetClientRect(hwnd, &rect);
+#+END_SRC 
