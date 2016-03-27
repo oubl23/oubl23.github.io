@@ -11,18 +11,18 @@
 
 * 从控制台读取字符串
 使用 *BufferedReader* 的 *readLine()* 方法
-#+BEGIN_SRC java -n
+#+BEGIN_SRC
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 str = br.readLine();
 #+END_SRC
 * 控制台输出
-#+BEGIN_SRC java -n 
+#+BEGIN_SRC
 System.out.println();
 System.out.write();
 #+END_SRC
 * FileInputStream
 读取文件
-#+BEGIN_SRC java -n
+#+BEGIN_SRC
 InputStream f = new FileInputStream('/home/dabao/java/1.txt');
 
 File f = new File('/home/dabao/java/1.txt');
@@ -30,7 +30,7 @@ InputStream = new FileInputStream(f);
 #+END_SRC
 * FileOutputStream
 写入文件
-#+BEGIN_SRC java -n
+#+BEGIN_SRC
 OutputStream f = new FileOutputStream('/home/dabao/java/1.txt');
 
 File f =  new File('/home/dabao/java/1.txt');
@@ -38,10 +38,10 @@ OutputStream f = new FileOutputStream(f);
 #+END_SRC
 * Java目录
 /mkdir()/ /mkdirs()/
-#+BEGIN_SRC java
+#+BEGIN_SRC
 String dirname = "/tmp/user";
 File d = new File(dirname);
 d.mkdirs();
 #+END_SRC
 * 读取目录
-*isDirectory()*
+  *isDirectory()*
