@@ -4,16 +4,44 @@
     <title>oubl23&#39;s world</title>
     <link>http://oubl23.github.io</link>
     <description>==============&gt; B WOOL</description>
-    <pubDate>六, 26  3月 2016 13:06:30 HKT</pubDate>
-    <lastBuildDate>六, 26  3月 2016 13:06:30 HKT</lastBuildDate>
+    <pubDate>日, 27  3月 2016 17:02:32 HKT</pubDate>
+    <lastBuildDate>日, 27  3月 2016 17:02:32 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>Windows Api GDI绘图基础</title>
-      <link>http://oubl23.github.io/blog/2016/03/26/windows-api-gdi绘图基础</link>
-      <description>介绍windowsAPI的绘图</description>
-      <pubDate>2016-03-26</pubDate>
-      <guid>http://oubl23.github.io/blog/2016/03/26/windows-api-gdi绘图基础</guid>
+      <title>Java File Io</title>
+      <link>http://oubl23.github.io/blog/2015/12/27/java-file-io</link>
+      <description>file io</description>
+      <pubDate>2016-03-27</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/12/27/java-file-io</guid>
+    </item>
+    <item>
+      <title>Java循环</title>
+      <link>http://oubl23.github.io/blog/2015/12/26/java循环</link>
+      <description>Java loop</description>
+      <pubDate>2016-03-27</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/12/26/java循环</guid>
+    </item>
+    <item>
+      <title>Java基本数据结构</title>
+      <link>http://oubl23.github.io/blog/2015/12/24/java基本数据结构</link>
+      <description></description>
+      <pubDate>2015-12-26</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/12/24/java基本数据结构</guid>
+    </item>
+    <item>
+      <title>Java修饰符</title>
+      <link>http://oubl23.github.io/blog/2015/12/25/javamodify</link>
+      <description>Java修饰符号</description>
+      <pubDate>2015-12-26</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/12/25/javamodify</guid>
+    </item>
+    <item>
+      <title>Java运算符</title>
+      <link>http://oubl23.github.io/blog/2015/12/25/java运算符</link>
+      <description>java运算符</description>
+      <pubDate>2015-12-26</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/12/25/java运算符</guid>
     </item>
   </channel>
 </rss>
