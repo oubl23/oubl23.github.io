@@ -12,7 +12,7 @@
 * do...while
 * for
 * for(power)
-#+BEGIN_SRC java
+#+BEGIN_SRC
 int [] numbers = {10,20,30,40};
 for(int x:numbers){
   System.out.println(x);
