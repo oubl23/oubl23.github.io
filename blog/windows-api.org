@@ -1,0 +1,53 @@
+#+TITLE:       windows api
+#+AUTHOR:      
+#+EMAIL:       oubaolong@MySHwoks-XFZ
+#+DATE:        2016-03-27 日
+#+URI:         /blog/2016/03/27/windows-api
+#+KEYWORDS:    windows api,gdi
+#+TAGS:        study
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: learn windows api
+* 窗口类的创建
+#+BEGIN_SRC 
+	if (!RegisterClass(&wndclass))
+	{
+		MessageBox(NULL, TEXT("This program requires Windows NT!"),
+			szAppName, MB_ICONERROR);
+		return 0;
+	}
+#+END_SRC
+* 窗口的创建
+#+BEGIN_SRC 
+hwnd = CreateWindow();
+#+END_SRC
+* 窗口的显示
+#+BEGIN_SRC 
+	ShowWindow(hwnd, iCmdShow);
+	UpdateWindow(hwnd);
+#+END_SRC
+* 消息循环
+#+BEGIN_SRC 
+	while (GetMessage(&msg, NULL, 0, 0))
+	{
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+	return msg.wParam;
+#+END_SRC
+* 窗口过程
+#+BEGIN_SRC 
+LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+#+END_SRC
+* 消息处理
+#+BEGIN_SRC 
+switch (message){
+ case WM_CREATE:
+  return 0;
+ case WM_PAINT:
+  return 0;
+ case WM_DESTORY:
+  return 0;
+}
+return DefWindowProc(hwnd, message, wParam, lParam);
+#+END_SRC
