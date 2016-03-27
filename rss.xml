@@ -4,8 +4,8 @@
     <title>oubl23&#39;s world</title>
     <link>http://oubl23.github.io</link>
     <description>==============&gt; B WOOL</description>
-    <pubDate>日, 27  3月 2016 17:19:45 HKT</pubDate>
-    <lastBuildDate>日, 27  3月 2016 17:19:45 HKT</lastBuildDate>
+    <pubDate>日, 27  3月 2016 22:47:15 HKT</pubDate>
+    <lastBuildDate>日, 27  3月 2016 22:47:15 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -28,6 +28,13 @@
       <description>learn windows api</description>
       <pubDate>2016-03-27</pubDate>
       <guid>http://oubl23.github.io/blog/2016/03/27/windows-api</guid>
+    </item>
+    <item>
+      <title>GDI绘图</title>
+      <link>http://oubl23.github.io/blog/2016/03/27/gdi绘图</link>
+      <description>GDI绘图</description>
+      <pubDate>2016-03-27</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/03/27/gdi绘图</guid>
     </item>
     <item>
       <title>Java基本数据结构</title>
