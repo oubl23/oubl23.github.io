@@ -1,0 +1,31 @@
+#+TITLE:       C语言概述
+#+AUTHOR:      
+#+EMAIL:       oubaolong@MySHwoks-XFZ
+#+DATE:        2016-05-10 二
+#+URI:         /blog/2016/05/10/c语言概述
+#+KEYWORDS:    C
+#+TAGS:        C
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: C语言概述
+* main 函数 
+#+BEGIN_SRC
+//不适用于C99中 
+mian()
+{
+....
+}
+#+END_SRC
+#+BEGIN_SRC 
+//还没被哪一个编译器收录，不过可以使用
+void main(){
+...
+}
+#+END_SRC
+#+BEGIN_SRC 
+//C99中的main函数一般用法
+int main(void)
+{
+..
+}
+#+END_SRC
