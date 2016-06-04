@@ -28,6 +28,7 @@ print html
 ** 使用python中提供的正则表达式来筛选数据
 http://www.cnblogs.com/fnng/archive/2013/05/20/3089816.html
 #+BEGIN_SRC 
+import re
 def getImg(html):
     reg = r'src="(.+?\.jpg)" pic_ext'
     imgre = re.compile(reg)
@@ -36,7 +37,8 @@ def getImg(html):
 #+END_SRC
 * 保存数据到本地
 这里的核心是用到了urllib.urlretrieve()方法
-#+BEGIN_SRC 
+#+BEGIN_SRC
+import re 
 def getImg(html):
     reg = r'src="(.+?\.jpg)" pic_ext'
     imgre = re.compile(reg)
