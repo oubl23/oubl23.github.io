@@ -4,10 +4,31 @@
     <title>oubl23&#39;s world</title>
     <link>http://oubl23.github.io</link>
     <description>==============&gt; B WOOL</description>
-    <pubDate>日, 27  3月 2016 22:47:15 HKT</pubDate>
-    <lastBuildDate>日, 27  3月 2016 22:47:15 HKT</lastBuildDate>
+    <pubDate>六, 04  6月 2016 19:22:26 HKT</pubDate>
+    <lastBuildDate>六, 04  6月 2016 19:22:26 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>python爬虫</title>
+      <link>http://oubl23.github.io/blog/2016/05/18/python爬虫</link>
+      <description>python 爬虫</description>
+      <pubDate>2016-06-04</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/05/18/python爬虫</guid>
+    </item>
+    <item>
+      <title>数据和C</title>
+      <link>http://oubl23.github.io/blog/2016/05/11/数据和c</link>
+      <description>C使用基本数据类型，整形浮点的区别</description>
+      <pubDate>2016-05-18</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/05/11/数据和c</guid>
+    </item>
+    <item>
+      <title>C语言概述</title>
+      <link>http://oubl23.github.io/blog/2016/05/10/c语言概述</link>
+      <description>C语言概述</description>
+      <pubDate>2016-05-18</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/05/10/c语言概述</guid>
+    </item>
     <item>
       <title>Java File Io</title>
       <link>http://oubl23.github.io/blog/2015/12/27/java-file-io</link>
