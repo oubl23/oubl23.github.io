@@ -1,0 +1,48 @@
+#+TITLE:       python爬虫
+#+AUTHOR:      
+#+EMAIL:       oubaolong@MySHwoks-XFZ
+#+DATE:        2016-05-18 三
+#+URI:         /blog/2016/05/18/python爬虫
+#+KEYWORDS:    python,crawler
+#+TAGS:        python
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: python 爬虫
+* 获得数据
+** Urllib模块提供读取web界面数据的给口。urllib.urlopen()用于打开URL地址。其中的read方法用于读取URL上的数据。
+#+BEGIN_SRC 
+#coding=utf-8
+import urllib
+
+def getHtml(url):
+    page = urllib.urlopen(url)
+    html = page.read()
+    return html
+
+html = getHtml("http://tieba.baidu.com/p/2738151262")
+
+print html
+#+END_SRC
+
+* 筛选数据
+** 使用python中提供的正则表达式来筛选数据
+http://www.cnblogs.com/fnng/archive/2013/05/20/3089816.html
+#+BEGIN_SRC 
+def getImg(html):
+    reg = r'src="(.+?\.jpg)" pic_ext'
+    imgre = re.compile(reg)
+    imglist = re.findall(imgre,html)
+    return imglist    
+#+END_SRC
+* 保存数据到本地
+这里的核心是用到了urllib.urlretrieve()方法
+#+BEGIN_SRC 
+def getImg(html):
+    reg = r'src="(.+?\.jpg)" pic_ext'
+    imgre = re.compile(reg)
+    imglist = re.findall(imgre,html)
+    x = 0
+    for imgurl in imglist:
+        urllib.urlretrieve(imgurl,'%s.jpg' % x)
+        x+=1
+#+END_SRC 
