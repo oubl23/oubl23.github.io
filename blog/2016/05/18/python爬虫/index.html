@@ -82,6 +82,7 @@ print html
 <a href="http://www.cnblogs.com/fnng/archive/2013/05/20/3089816.html">http://www.cnblogs.com/fnng/archive/2013/05/20/3089816.html</a>
 </p>
 <pre class="example">
+import re
 def getImg(html):
     reg = r'src="(.+?\.jpg)" pic_ext'
     imgre = re.compile(reg)
@@ -98,6 +99,7 @@ def getImg(html):
 这里的核心是用到了urllib.urlretrieve()方法
 </p>
 <pre class="example">
+import re 
 def getImg(html):
     reg = r'src="(.+?\.jpg)" pic_ext'
     imgre = re.compile(reg)
