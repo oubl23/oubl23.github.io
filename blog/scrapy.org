@@ -1,0 +1,168 @@
+#+TITLE:       scrapy
+#+AUTHOR:      
+#+EMAIL:       oubaolong@MySHwoks-XFZ
+#+DATE:        2016-06-25 六
+#+URI:         /blog/2016/6/25/scrapy
+#+KEYWORDS:    scrapy, crawl, python
+#+TAGS:        scrapy, python
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: scrapy
+
+* 安装
+#+BEGIN_SRC 
+pip install scrapy
+#+END_SRC
+
+* 新建工程
+#+BEGIN_SRC 
+scapy startproject projectname  
+#+END_SRC
+
+* 定义Item容器
+就是编写item.py中的内容，也就是定义你需要爬取的内容
+#+BEGIN_SRC 
+from scrapy.item import Item,Field  
+  
+class SomeItem(Item):  
+    title = Field()  
+    link = Field()  
+    desc = Field()  
+#+END_SRC
+
+* 定义数据的处理pipelines.py
+** 定义为json数据保存
+#+BEGIN_SRC 
+import json  
+import codecs  
+
+class SomePipeline(object):  
+    def __init__(self):  
+        self.file = codecs.open('w3school_data_utf8.json', 'wb', encoding='utf-8')  
+  
+    def process_item(self, item, spider):  
+        line = json.dumps(dict(item)) + '\n'  
+        # print line  
+        self.file.write(line.decode("unicode_escape"))  
+        return item  
+#+END_SRC
+
+在settings.py中启用pipelines.py
+#+BEGIN_SRC 
+ITEM_PIPELINES = {  
+    'projectname.pipelines.W3SchoolPipeline':300  
+}  
+#+END_SRC
+
+** 定义为保存图片
+
+#+BEGIN_SRC 
+import requests
+import os
+from weilai import settings
+
+class WeilaiPipeline(object):
+    def process_item(self, item, spider):
+        if 'image_urls' in item:
+            dir_path = '%s/%s' % (settings.IMAGES_STORE, spider.name)
+            #pprint.pprint(item['image_urls'])
+            image_url = item['image_urls']
+            #创建文件夹
+            if not os.path.exists(dir_path):
+                os.makedirs(dir_path)
+            us = image_url.split('/')[6:]
+            image_file_name = '_'.join(us)
+            file_path = "%s/%s" % (dir_path, image_file_name)
+            images = file_path
+
+           #获取图片数据
+            with open(file_path, 'wb') as handle:
+                response = requests.get(image_url, stream=True)
+                for block in response.iter_content(1024):
+                    if not block:
+                        break
+
+                    handle.write(block)
+            item['images'] = images
+        return item
+
+#+END_SRC
+
+* 编写爬虫
+在spider文件夹下新建工程
+** 继承Spider
+** 通过xpath找到我们需要的数据[[http://www.w3school.com.cn/xpath/xpath_syntax.asp][xpth教程]]
+** 赋值入item
+#+BEGIN_SRC 
+from scrapy.spider import Spider  
+from scrapy.selector import Selector  
+from w3school.items import W3schoolItem  
+  
+class W3schoolSpider(Spider):  
+    """爬取w3school标签"""  
+    name = "w3school"  
+    allowed_domains = ["w3school.com.cn"]  
+    start_urls = [  
+        "http://www.w3school.com.cn/xml/xml_syntax.asp"  
+    ]  
+  
+    def parse(self, response):  
+  
+        sel = Selector(response)  
+        sites = sel.xpath('//div[@id="navsecond"]/div[@id="course"]/ul[1]/li')  
+        items = []  
+  
+        for site in sites:  
+            item = W3schoolItem()  
+  
+            title = site.xpath('a/text()').extract()  
+            link = site.xpath('a/@href').extract()  
+            desc = site.xpath('a/@title').extract()  
+  
+            item['title'] = [t.encode('utf-8') for t in title]  
+            item['link'] = [l.encode('utf-8') for l in link]  
+            item['desc'] = [d.encode('utf-8') for d in desc]  
+            items.append(item)  
+  
+        return items
+#+END_SRC
+
+* 爬取多网页
+CrawlSpider
+
+#+BEGIN_SRC 
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor
+from scrapy.selector import Selector
+from CSDNBlog.items import CsdnblogItem
+
+class CSDNBlogCrawlSpider(CrawlSpider):
+
+    """继承自CrawlSpider，实现自动爬取的爬虫。"""
+
+    name = "CSDNBlogCrawlSpider"
+    #设置下载延时
+    download_delay = 2
+    allowed_domains = ['blog.csdn.net']
+    #第一篇文章地址
+    start_urls = ['http://blog.csdn.net/u012150179/article/details/11749017']
+    #rule教程http://doc.scrapy.org/en/latest/topics/spiders.html
+    rules = [
+        Rule(LinkExtractor(allow=('/u012150179/article/details'),
+                              restrict_xpaths=('//li[@class="next_article"]')),
+             callback='parse_item',
+             follow=True)
+    ]
+
+    def parse_item(self, response):
+        item = CsdnblogItem()
+        sel = Selector(response)
+        blog_url = str(response.url)
+        blog_name = sel.xpath('//div[@id="article_details"]/div/h1/span/a/text()').extract()
+
+        item['article_name'] = [n.encode('utf-8') for n in blog_name]
+        item['article_url'] = blog_url.encode('utf-8')
+
+        yield item
+
+#+END_SRC
