@@ -1,0 +1,37 @@
+#+TITLE:       Java修饰符
+#+AUTHOR:
+#+EMAIL:       dabao@DABAO
+#+DATE:        2015-12-24 Thu
+#+URI:         /blog/2015/12/25/javamodify
+#+KEYWORDS:    Modify
+#+TAGS:        Java
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Java修饰符号
+
+* 访问修饰符
+** default(默认)
+同一个包内可见
+** private(私有的)
+同一个类中可见
+** public(共有的)
+所有类可见
+** protected(受保护的)
+同一包内的类和所有子类可见
+
+* 非访问控制符
+** Static(修饰符)
++ 创建类方法和类变量
++ 无论一个类实例化多少对象，他的静态变量只有一份copy
++ 静态方法不能使用非静态变量
+** Final
++ 修饰类,方法和变量
++ 修饰的类不能被继承，修饰的方法不能被继承类重新定义
++ 修饰变量为常量不可被修改
+** Abstract
++ 用来创建抽象类和抽象方法
++ 声明抽象类的唯一目的是为了将来对该类进行扩充
++ 一个类包含抽象方法，那一定要声明为抽象类，抽象类可以包含非抽象方法
++ 抽象类不能被实例化
+** Synchronized and volatile
++ 主要用于线程编程

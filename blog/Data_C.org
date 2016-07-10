@@ -1,0 +1,21 @@
+#+TITLE:       数据和C
+#+AUTHOR:      
+#+EMAIL:       oubaolong@MySHwoks-XFZ
+#+DATE:        2016-05-11 三
+#+URI:         /blog/2016/05/11/数据和c
+#+KEYWORDS:    int,float,short,long,char,float,double,sizefo,scanf
+#+TAGS:        data,c
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: C使用基本数据类型，整形浮点的区别
+* 数据类型关键字
+| K&R      | C90    | C99        |
+| int      | singed | _Bool      |
+| long     | void   | _COMplex   |
+| short    |        | _IMAGinary |
+| unsigned |        |            |
+| char     |        |            |
+| float    |        |            |
+| double   |        |            |
+** _Complex表示复数
+** _Imaginary表示虚数

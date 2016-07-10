@@ -1,0 +1,21 @@
+#+TITLE:       Java循环
+#+AUTHOR:      DaBaO
+#+EMAIL:       dabao@DaBaOdeMacBook-Pro.local
+#+DATE:        2015-12-26 Sat
+#+URI:         /blog/2015/12/26/java循环
+#+KEYWORDS:    loop
+#+TAGS:        Java
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Java loop
+* while
+* do...while
+* for
+* for(power)
+#+BEGIN_SRC
+int [] numbers = {10,20,30,40};
+for(int x:numbers){
+  System.out.println(x);
+}
+#+END_SRC
+

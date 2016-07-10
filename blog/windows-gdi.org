@@ -1,0 +1,41 @@
+#+TITLE:       GDI绘图
+#+AUTHOR:      
+#+EMAIL:       oubaolong@MySHwoks-XFZ
+#+DATE:        2016-03-27 日
+#+URI:         /blog/2016/03/27/gdi绘图
+#+KEYWORDS:    GDI,Windows-api
+#+TAGS:        windows-api
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: GDI绘图
+
+* 简介
+#+BEGIN_SRC 
+//常用的字符输出函数
+TextOut(hdc, x, y, psText, iLength);
+#+END_SRC
+* 获取设备环境句柄：方法一
+#+BEGIN_SRC 
+//擦去无效区域内的背景以便绘图
+hdc = BeginPaint(hwnd, &ps);
+#+END_SRC
+** 释放环境句柄
+#+BEGIN_SRC 
+EndPaint(hwnd, &ps);
+#+END_SRC
+** DefWindowsProc 中的WM_PAINT
+#+BEGIN_SRC 
+case WM_PAINT:
+    BeginPaint (hwnd, &ps);
+    EndPaint (hwnd, &ps)
+    return 0;
+#+END_SRC
+   
+* 获取设备环境句柄：方法二
+  通常用于处理键盘消息和鼠标消息
+#+BEGIN_SRC 
+//获得环境句柄，裁剪矩阵是整个客户区，可以在客户区内任意绘制，不仅仅实在无效矩阵
+hdc = GetDc(hwnd);
+//与之对应的释放环境句柄
+ReleaseDC(hwnd, hdc);
+#+END_SRC
