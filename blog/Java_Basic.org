@@ -1,0 +1,12 @@
+#+TITLE:       Java基本要点
+#+AUTHOR:      
+#+EMAIL:       dabao@obl2343
+#+DATE:        2016-08-05 Fri
+#+URI:         /blog/2016/08/05/java基本要点
+#+KEYWORDS:    Java
+#+TAGS:        Java
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: JAVA basic 
+
+* Java语言规范，main方法必须声明为public 
