@@ -3,45 +3,80 @@
   <channel>
     <title>oubl23&#39;s world</title>
     <link>http://oubl23.github.io</link>
-    <description>==============&gt; B WOOL</description>
-    <pubDate>Sun, 27 Dec 2015 00:30:25 CST</pubDate>
-    <lastBuildDate>Sun, 27 Dec 2015 00:30:25 CST</lastBuildDate>
+    <description>==============&gt; LIKE WIND</description>
+    <pubDate>Sun, 11 Sep 2016 23:57:56 UTC</pubDate>
+    <lastBuildDate>Sun, 11 Sep 2016 23:57:56 UTC</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Java基本要点</title>
+      <link>http://oubl23.github.io/blog/2016/08/05/java基本要点</link>
+      <description>JAVA basic </description>
+      <pubDate>2016-09-11</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/08/05/java基本要点</guid>
+    </item>
+    <item>
+      <title>数据结构interview</title>
+      <link>http://oubl23.github.io/blog/2016/9/11/数据结构interview</link>
+      <description>interview</description>
+      <pubDate>2016-09-11</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/9/11/数据结构interview</guid>
+    </item>
+    <item>
+      <title>scrapy</title>
+      <link>http://oubl23.github.io/blog/2016/6/25/scrapy</link>
+      <description>scrapy</description>
+      <pubDate>2016-06-26</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/6/25/scrapy</guid>
+    </item>
+    <item>
+      <title>python爬虫</title>
+      <link>http://oubl23.github.io/blog/2016/05/18/python爬虫</link>
+      <description>python 爬虫</description>
+      <pubDate>2016-06-04</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/05/18/python爬虫</guid>
+    </item>
+    <item>
+      <title>数据和C</title>
+      <link>http://oubl23.github.io/blog/2016/05/11/数据和c</link>
+      <description>C使用基本数据类型，整形浮点的区别</description>
+      <pubDate>2016-05-18</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/05/11/数据和c</guid>
+    </item>
+    <item>
+      <title>C语言概述</title>
+      <link>http://oubl23.github.io/blog/2016/05/10/c语言概述</link>
+      <description>C语言概述</description>
+      <pubDate>2016-05-18</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/05/10/c语言概述</guid>
+    </item>
     <item>
       <title>Java File Io</title>
       <link>http://oubl23.github.io/blog/2015/12/27/java-file-io</link>
       <description>file io</description>
-      <pubDate>2015-12-27</pubDate>
+      <pubDate>2016-03-27</pubDate>
       <guid>http://oubl23.github.io/blog/2015/12/27/java-file-io</guid>
-    </item>
-    <item>
-      <title>Java基本数据结构</title>
-      <link>http://oubl23.github.io/blog/2015/12/24/java基本数据结构</link>
-      <description></description>
-      <pubDate>2015-12-26</pubDate>
-      <guid>http://oubl23.github.io/blog/2015/12/24/java基本数据结构</guid>
     </item>
     <item>
       <title>Java循环</title>
       <link>http://oubl23.github.io/blog/2015/12/26/java循环</link>
       <description>Java loop</description>
-      <pubDate>2015-12-26</pubDate>
+      <pubDate>2016-03-27</pubDate>
       <guid>http://oubl23.github.io/blog/2015/12/26/java循环</guid>
     </item>
     <item>
-      <title>Java修饰符</title>
-      <link>http://oubl23.github.io/blog/2015/12/25/javamodify</link>
-      <description>Java修饰符号</description>
-      <pubDate>2015-12-26</pubDate>
-      <guid>http://oubl23.github.io/blog/2015/12/25/javamodify</guid>
+      <title>windows api</title>
+      <link>http://oubl23.github.io/blog/2016/03/27/windows-api</link>
+      <description>learn windows api</description>
+      <pubDate>2016-03-27</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/03/27/windows-api</guid>
     </item>
     <item>
-      <title>Java运算符</title>
-      <link>http://oubl23.github.io/blog/2015/12/25/java运算符</link>
-      <description>java运算符</description>
-      <pubDate>2015-12-26</pubDate>
-      <guid>http://oubl23.github.io/blog/2015/12/25/java运算符</guid>
+      <title>GDI绘图</title>
+      <link>http://oubl23.github.io/blog/2016/03/27/gdi绘图</link>
+      <description>GDI绘图</description>
+      <pubDate>2016-03-27</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/03/27/gdi绘图</guid>
     </item>
   </channel>
 </rss>
