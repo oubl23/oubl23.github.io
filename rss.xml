@@ -3,6 +3,7 @@
   <channel>
     <title>oubl23&#39;s world</title>
     <link>http://oubl23.github.io</link>
+<<<<<<< HEAD
     <description>==============&gt; LIKE WIND</description>
     <pubDate>Mon, 12 Sep 2016 00:06:33 UTC</pubDate>
     <lastBuildDate>Mon, 12 Sep 2016 00:06:33 UTC</lastBuildDate>
@@ -23,6 +24,14 @@
       <guid>http://oubl23.github.io/blog/2016/9/11/数据结构interview</guid>
     </item>
     <item>
+=======
+    <description>==============&gt; B WOOL</description>
+    <pubDate>日, 26  6月 2016 00:45:12 HKT</pubDate>
+    <lastBuildDate>日, 26  6月 2016 00:45:12 HKT</lastBuildDate>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+>>>>>>> 518d5cc2d7e642eebcb5bcd7e75de0737408045c
       <title>scrapy</title>
       <link>http://oubl23.github.io/blog/2016/6/25/scrapy</link>
       <description>scrapy</description>
@@ -70,6 +79,7 @@
       <description>learn windows api</description>
       <pubDate>2016-03-27</pubDate>
       <guid>http://oubl23.github.io/blog/2016/03/27/windows-api</guid>
+<<<<<<< HEAD
     </item>
     <item>
       <title>GDI绘图</title>
@@ -78,5 +88,29 @@
       <pubDate>2016-03-27</pubDate>
       <guid>http://oubl23.github.io/blog/2016/03/27/gdi绘图</guid>
     </item>
+=======
+    </item>
+    <item>
+      <title>GDI绘图</title>
+      <link>http://oubl23.github.io/blog/2016/03/27/gdi绘图</link>
+      <description>GDI绘图</description>
+      <pubDate>2016-03-27</pubDate>
+      <guid>http://oubl23.github.io/blog/2016/03/27/gdi绘图</guid>
+    </item>
+    <item>
+      <title>Java基本数据结构</title>
+      <link>http://oubl23.github.io/blog/2015/12/24/java基本数据结构</link>
+      <description></description>
+      <pubDate>2015-12-26</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/12/24/java基本数据结构</guid>
+    </item>
+    <item>
+      <title>Java修饰符</title>
+      <link>http://oubl23.github.io/blog/2015/12/25/javamodify</link>
+      <description>Java修饰符号</description>
+      <pubDate>2015-12-26</pubDate>
+      <guid>http://oubl23.github.io/blog/2015/12/25/javamodify</guid>
+    </item>
+>>>>>>> 518d5cc2d7e642eebcb5bcd7e75de0737408045c
   </channel>
 </rss>
