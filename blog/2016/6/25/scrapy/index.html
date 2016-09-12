@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>scrapy - oubl23&#39;s world</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <meta name="description" content="scrapy" />
+    <meta name="keywords" content="scrapy, crawl, python" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">oubl23&#39;s world</a></h1>
+        <p>==============&gt; LIKE WIND</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/oubl23">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="oubl23.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>scrapy</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">安装</a></li>
+<li><a href="#sec-2">新建工程</a></li>
+<li><a href="#sec-3">定义Item容器</a></li>
+<li><a href="#sec-4">定义数据的处理pipelines.py</a>
+<ul>
+<li><a href="#sec-4-1">定义为json数据保存</a></li>
+<li><a href="#sec-4-2">定义为保存图片</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">编写爬虫</a>
+<ul>
+<li><a href="#sec-5-1">继承Spider</a></li>
+<li><a href="#sec-5-2">通过xpath找到我们需要的数据xpth教程</a></li>
+<li><a href="#sec-5-3">赋值入item</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">爬取多网页</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">安装</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="example">
+pip install scrapy
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">新建工程</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+scapy startproject projectname
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">定义Item容器</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+就是编写item.py中的内容，也就是定义你需要爬取的内容
+</p>
+<pre class="example">
+from scrapy.item import Item,Field  
+  
+class SomeItem(Item):  
+    title = Field()  
+    link = Field()  
+    desc = Field()
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">定义数据的处理pipelines.py</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">定义为json数据保存</h3>
+<div class="outline-text-3" id="text-4-1">
+<pre class="example">
+import json  
+import codecs  
+
+class SomePipeline(object):  
+    def __init__(self):  
+        self.file = codecs.open('w3school_data_utf8.json', 'wb', encoding='utf-8')  
+  
+    def process_item(self, item, spider):  
+        line = json.dumps(dict(item)) + '\n'  
+        # print line  
+        self.file.write(line.decode("unicode_escape"))  
+        return item
+</pre>
+
+<p>
+在settings.py中启用pipelines.py
+</p>
+<pre class="example">
+ITEM_PIPELINES = {  
+    'projectname.pipelines.W3SchoolPipeline':300  
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">定义为保存图片</h3>
+<div class="outline-text-3" id="text-4-2">
+<pre class="example">
+import requests
+import os
+from weilai import settings
+
+class WeilaiPipeline(object):
+    def process_item(self, item, spider):
+        if 'image_urls' in item:
+            dir_path = '%s/%s' % (settings.IMAGES_STORE, spider.name)
+            #pprint.pprint(item['image_urls'])
+            image_url = item['image_urls']
+            #创建文件夹
+            if not os.path.exists(dir_path):
+                os.makedirs(dir_path)
+            us = image_url.split('/')[6:]
+            image_file_name = '_'.join(us)
+            file_path = "%s/%s" % (dir_path, image_file_name)
+            images = file_path
+
+           #获取图片数据
+            with open(file_path, 'wb') as handle:
+                response = requests.get(image_url, stream=True)
+                for block in response.iter_content(1024):
+                    if not block:
+                        break
+
+                    handle.write(block)
+            item['images'] = images
+        return item
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">编写爬虫</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+在spider文件夹下新建工程
+</p>
+</div>
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">继承Spider</h3>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">通过xpath找到我们需要的数据<a href="http://www.w3school.com.cn/xpath/xpath_syntax.asp">xpth教程</a></h3>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3">赋值入item</h3>
+<div class="outline-text-3" id="text-5-3">
+<pre class="example">
+from scrapy.spider import Spider  
+from scrapy.selector import Selector  
+from w3school.items import W3schoolItem  
+  
+class W3schoolSpider(Spider):  
+    """爬取w3school标签"""  
+    name = "w3school"  
+    allowed_domains = ["w3school.com.cn"]  
+    start_urls = [  
+        "http://www.w3school.com.cn/xml/xml_syntax.asp"  
+    ]  
+  
+    def parse(self, response):  
+  
+        sel = Selector(response)  
+        sites = sel.xpath('//div[@id="navsecond"]/div[@id="course"]/ul[1]/li')  
+        items = []  
+  
+        for site in sites:  
+            item = W3schoolItem()  
+  
+            title = site.xpath('a/text()').extract()  
+            link = site.xpath('a/@href').extract()  
+            desc = site.xpath('a/@title').extract()  
+  
+            item['title'] = [t.encode('utf-8') for t in title]  
+            item['link'] = [l.encode('utf-8') for l in link]  
+            item['desc'] = [d.encode('utf-8') for d in desc]  
+            items.append(item)  
+  
+        return items
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">爬取多网页</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+CrawlSpider
+</p>
+
+<pre class="example">
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor
+from scrapy.selector import Selector
+from CSDNBlog.items import CsdnblogItem
+
+class CSDNBlogCrawlSpider(CrawlSpider):
+
+    """继承自CrawlSpider，实现自动爬取的爬虫。"""
+
+    name = "CSDNBlogCrawlSpider"
+    #设置下载延时
+    download_delay = 2
+    allowed_domains = ['blog.csdn.net']
+    #第一篇文章地址
+    start_urls = ['http://blog.csdn.net/u012150179/article/details/11749017']
+    #rule教程http://doc.scrapy.org/en/latest/topics/spiders.html
+    rules = [
+        Rule(LinkExtractor(allow=('/u012150179/article/details'),
+                              restrict_xpaths=('//li[@class="next_article"]')),
+             callback='parse_item',
+             follow=True)
+    ]
+
+    def parse_item(self, response):
+        item = CsdnblogItem()
+        sel = Selector(response)
+        blog_url = str(response.url)
+        blog_name = sel.xpath('//div[@id="article_details"]/div/h1/span/a/text()').extract()
+
+        item['article_name'] = [n.encode('utf-8') for n in blog_name]
+        item['article_url'] = blog_url.encode('utf-8')
+
+        yield item
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-06-25</span>
+        <span title="last modification date" class="post-info">2016-06-26</span>
+        <span title="tags" class="post-info"><a href="/tags/scrapy/">scrapy</a> <a href="/tags/python/">python</a></span>
+        <span title="author" class="post-info"></span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2016/6/25/scrapy";
+          var disqus_url = "http://oubl23.github.io/blog/2016/6/25/scrapy";
+          var disqus_shortname = 'oubl23';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:oubaolong &lt;at&gt; MySHwoks-XFZ"></a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
