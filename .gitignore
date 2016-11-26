@@ -1,0 +1,4 @@
+node_modules/
+themes/
+.deploy_git/*
+public/
