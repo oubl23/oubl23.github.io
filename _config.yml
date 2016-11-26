@@ -6,7 +6,7 @@
 title: Hexo
 subtitle:
 description:
-author: O0U 
+author: o0U
 language:
 timezone:
 
@@ -63,11 +63,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-next
+theme: hexo-theme-next 
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/oubl23/oubl23.github.io.git
+  repo: git@github.com:oubl23/oubl23.github.io.git
   branch: master
