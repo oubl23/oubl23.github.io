@@ -1,5 +1,6 @@
 node_modules/
 themes/*
+!_config.yml
 .deploy_git/
 public/
 db.json
