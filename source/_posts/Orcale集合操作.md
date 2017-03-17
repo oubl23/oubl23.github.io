@@ -1,7 +1,7 @@
 ---
 title: Orcale集合操作
 date: 2017-03-17 10:47:21
-tags:
+tags: ['orcale','sql']
 ---
 
 # UNION
@@ -15,4 +15,3 @@ tags:
 
 # MINUS
 返回两个查询中的 **不相同** 部分
- 

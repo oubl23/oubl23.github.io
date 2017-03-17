@@ -1,7 +1,7 @@
 ---
 title: Orcale表得创建和管理
 date: 2017-03-17 08:44:51
-tags:
+tags: ['orcale','sql']
 ---
 
 # DDL操作

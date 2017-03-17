@@ -1,7 +1,7 @@
 ---
 title: Orcale视图
 date: 2017-03-17 11:09:00
-tags:
+tags: ['orcale','sql']
 ---
 
 # 创建视图

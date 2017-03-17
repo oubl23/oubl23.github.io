@@ -1,7 +1,7 @@
 ---
 title: Orcale事务
 date: 2017-03-16 22:15:12
-tags:
+tags: ['orcale','sql']
 ---
 
 # orcale session

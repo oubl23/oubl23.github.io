@@ -1,7 +1,7 @@
 ---
 title: Orcale伪列
 date: 2017-03-16 22:40:30
-tags:
+tags: ['orcale','sql']
 ---
 
 # ROWNUM
