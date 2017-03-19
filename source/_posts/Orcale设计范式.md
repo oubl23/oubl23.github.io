@@ -1,0 +1,71 @@
+---
+title: Orcale设计范式
+date: 2017-03-17 15:21:54
+tags:
+---
+
+# 第一范式
+1. 每个字段不可再分，每个列有意义
+2. 建立所以的数据可能过于冗余，可用对应关系解决。
+
+```sql
+CREATE TABLE STUDENT_COURSE(
+  STUNO VARCHAR2(50) PRIMARY KEY NOT NULL,
+  STUNAME VARCHAR2(50),
+  STUAGE NUMBER,
+  COURSENAME VARCHAR2(50),
+  REDIT NUMBER,
+  GRADE NUMBER,
+)
+```
+# 第二范式
+>建立对应关系分别存储
+
+```sql
+CREATE TABLE STUDENT (
+  STUNO VARCHAR2(50) PRIMARY KEY NOT NULL,
+  STUNAME VARCHAR2(50),
+  STUAGE NUMBER
+)
+
+CREATE TABLE COURSE(
+  CI NUMBER(5) PRIMARY KEY NOT NULL,
+  CNAME VARCHAR2(50),
+  CREDIT NUMBER
+)
+
+CREATE TABLE SEKECT_COURSE(
+  STUNO VARCHAR2(50),
+  CID NUMBER(5),
+  GRADE NUMBER,
+  加入外键
+)
+```
+
+# 第三范式
+>一对多的设计
+
+```sql
+CREATE TABLE COLLEGE(
+  CID NUMBER(4) PRIMARY KEY NOT NULL,
+  CNAME VARCHAR2(50) NOT NULL,
+  CADDRESS VARCHAR2(200) NOT NULL,
+  CTEL VARCHAR2(200) NOT NULL
+);
+CREATE TABLE STUDENT (
+  STUNO VARCHAR2(50) PRIMARY KEY NOT NULL,
+  STUNAME VARCHA2(5)),
+  STUAGE NUMBER,
+  CID NUMBER(4),
+  建立主外键关系
+)
+```
+
+# 唯一范式
+1. 数据库的关联越少愈好，sql语句的复杂越低越好。
+
+# 数据库设计工具
+## sybase
+
+## powerdesigner
+1. 选择物理数据模型
