@@ -392,12 +392,7 @@ algolia_search:
     hits_empty: "We didn't find any results for the search: ${query}"
     hits_stats: "${hits} results found in ${time} ms"
 
-algolia:
-  applicationID: '7XAVTWF8VM'
-  apiKey: 'd61827753f34f2628292f40ce59f4a6d'
-  adminApiKey: 'f4c6d297bf0213671a0b70cc30d4f4a6'
-  indexName: 'hexo'
-  chunkSize: 5000
+
 
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING SETTINGS

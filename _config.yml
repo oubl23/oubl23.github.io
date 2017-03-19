@@ -6,7 +6,7 @@
 title: o0U
 subtitle:
 description:
-author: o0U 
+author: o0U
 language: zh-Hans
 timezone:
 
@@ -72,3 +72,10 @@ deploy:
   type: git
   repo: git@github.com:oubl23/oubl23.github.io.git
   branch: master
+
+algolia:
+  applicationID: '7XAVTWF8VM'
+  apiKey: 'd61827753f34f2628292f40ce59f4a6d'
+  adminApiKey: 'f4c6d297bf0213671a0b70cc30d4f4a6'
+  indexName: 'hexo'
+  chunkSize: 5000
