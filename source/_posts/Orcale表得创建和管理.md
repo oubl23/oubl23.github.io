@@ -1,6 +1,7 @@
 ---
 title: Orcale表得创建和管理
 date: 2017-03-17 08:44:51
+categories: 学习笔记
 tags: ['orcale','sql']
 ---
 

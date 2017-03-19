@@ -1,6 +1,7 @@
 ---
 title: Pl/SQL编程
 date: 2017-03-19 12:25:55
+categories: 学习笔记
 tags: ['orcale','pl/sql']
 ---
 # pl/sql

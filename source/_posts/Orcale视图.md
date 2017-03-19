@@ -1,6 +1,7 @@
 ---
 title: Orcale视图
 date: 2017-03-17 11:09:00
+categories: 学习笔记
 tags: ['orcale','sql']
 ---
 

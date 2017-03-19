@@ -1,7 +1,10 @@
 ---
 title: Orcale设计范式
 date: 2017-03-17 15:21:54
+categories: 学习笔记
 tags:
+  - orcale
+  - 规范
 ---
 
 # 第一范式

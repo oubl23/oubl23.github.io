@@ -1,6 +1,7 @@
 ---
 title: Orcale语句和函数
 date: 2017-03-16 10:50:39
+categories: 学习笔记
 tags:['orcale','sql']
 ---
 
