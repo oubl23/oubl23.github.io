@@ -1,8 +1,9 @@
 ---
 title: Oracle用户管理
 date: 2017-03-17 14:20:52
-type: "tags"
-tags: ['orcale','sql']
+categories: orcale
+tags:
+  - orcale
 ---
 
 # 创建用户
