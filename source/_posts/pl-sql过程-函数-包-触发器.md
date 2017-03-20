@@ -34,6 +34,14 @@ create or replace package testpackage as
   type test_cursor is ref cursor;
 end testpackage;
 
+-- 2.创建存储过程
+create or replace procedure sp_pro9
+(spNo in number, p_cursor out testpackage.test_cursor) is
+begin
+open p_cursor for select * from emp where deptno=spNo;
+end;
+/
+
 ```
 
 # 函数
