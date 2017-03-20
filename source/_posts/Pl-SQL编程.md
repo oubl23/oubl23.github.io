@@ -81,3 +81,9 @@ dbms_output.put_line('error');
   end;
 
 ```
+
+## 输入输出
+配置界面输出可见
+```sql
+set serveroutput on;
+```
