@@ -4,7 +4,7 @@ date: 2017-03-20 10:47:52
 categories: 学习笔记
 tags:
   - pl/sql
-  - orcale
+  - oracle
 ---
 
 # 定义变量

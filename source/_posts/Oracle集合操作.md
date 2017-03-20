@@ -1,9 +1,9 @@
 ---
-title: Orcale集合操作
+title: Oracle集合操作
 date: 2017-03-17 10:47:21
 categories: 学习笔记
 tags:
-  - orcale
+  - oracle
   - sql
 ---
 

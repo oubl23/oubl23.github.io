@@ -4,7 +4,7 @@ date: 2017-03-19 12:25:55
 categories: 学习笔记
 tags:
   - pl/sql
-  - orcale
+  - oracle
 ---
 # pl/sql
 ## 优点

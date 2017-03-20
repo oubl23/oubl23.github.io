@@ -1,9 +1,9 @@
 ---
-title: Orcale事务
+title: Oracle事务
 date: 2017-03-16 22:15:12
 categories: 学习笔记
 tags:
-  - orcale
+  - oracle
 ---
 
 # orcale session

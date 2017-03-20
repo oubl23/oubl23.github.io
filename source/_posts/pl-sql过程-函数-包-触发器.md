@@ -4,14 +4,14 @@ date: 2017-03-20 10:21:46
 categories: 学习笔记
 tags:
   - pl/sql
-  - orcale
+  - oracle
 ---
 
 # 过程
 用于执行指定的操作。输入输出参数可选，使用 **create procedure** 创建过程
 
 ```sql
-create procedure sp_pro3(spName varchar2, new Sal number) is
+create procedure sp_pro3(spName [in] varchar2, newSal [in] number) is
 begin
 update emp set sal =newSal where enma=spName;
 end;

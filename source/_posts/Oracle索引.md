@@ -1,9 +1,9 @@
 ---
-title: Orcale索引
+title: Oracle索引
 date: 2017-03-19 11:45:03
 categories: 学习笔记
 tags:
-  - orcale
+  - oracle
 ---
 
 # 原则

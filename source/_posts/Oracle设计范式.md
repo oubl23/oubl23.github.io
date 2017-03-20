@@ -1,9 +1,9 @@
 ---
-title: Orcale设计范式
+title: Oracle设计范式
 date: 2017-03-17 15:21:54
 categories: 学习笔记
 tags:
-  - orcale
+  - oracle
   - 规范
 ---
 
