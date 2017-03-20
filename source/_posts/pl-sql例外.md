@@ -16,6 +16,7 @@ exception
   dbms_output.put_line('编号不存在!');
 ```
 
+<!--more-->
 ## case_not_found
 
 ```sql
@@ -64,10 +65,10 @@ begin
 
   if sql%notfound then
   raise myex;
-  end if
+  end if;
 exception
  when myex then
- dbms.output.put_line('没有更新任何用户');
+ dbms_output.put_line('没有更新任何用户');
 end;
 
 
