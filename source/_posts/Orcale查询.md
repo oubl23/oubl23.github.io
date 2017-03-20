@@ -2,7 +2,9 @@
 title: Orcale查询
 date: 2017-03-16 14:46:12
 categories: 学习笔记
-tags: ['orcale','sql']
+tags:
+  - orcale
+  - sql
 ---
 
 # 基本查询语法

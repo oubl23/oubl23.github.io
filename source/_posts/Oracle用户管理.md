@@ -4,6 +4,7 @@ date: 2017-03-17 14:20:52
 categories: 学习笔记
 tags:
   - orcale
+  - sql
 ---
 
 # 创建用户

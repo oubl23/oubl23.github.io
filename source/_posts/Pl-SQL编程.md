@@ -2,7 +2,9 @@
 title: Pl/SQL编程
 date: 2017-03-19 12:25:55
 categories: 学习笔记
-tags: ['orcale','pl/sql']
+tags:
+  - pl/sql
+  - orcale
 ---
 # pl/sql
 ## 优点
@@ -64,4 +66,18 @@ begin
 exception
 /*例外部分*/
 end;
+```
+
+```sql
+declare
+v_ename vvarchar2(5);
+v_sal number(7,2);
+begin
+select ename,sal into v_ename, v_sal from emp where empno = &no;
+dbms_output.put_line('ename'||v_name);
+exception
+when no_data_found then
+dbms_output.put_line('error');
+  end;
+
 ```

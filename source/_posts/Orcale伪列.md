@@ -2,7 +2,8 @@
 title: Orcale伪列
 date: 2017-03-16 22:40:30
 categories: 学习笔记
-tags: ['orcale','sql']
+tags:
+  - orcale
 ---
 
 # ROWNUM
