@@ -37,6 +37,7 @@ sp_record emp_record_type;
 
 ```
 
+<!--more-->
 ### 表
 相当于 **数组**
 

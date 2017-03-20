@@ -15,8 +15,27 @@ create procedure sp_pro3(spName [in] varchar2, newSal [in] number) is
 begin
 update emp set sal =newSal where enma=spName;
 end;
-/
+
+--有输入输出的存储过程
+create or replace procedure sp_pro8
+(spno in number, spName out varchar2, spSal out number, spJob out varchar2)is
+begin
+  select ename,sal,job into spName,spSal,spJob from emp where empno=spno;
+end;
 ```
+<!--more-->
+
+## 返回值 -结果集列表
+>需要用到包
+
+```sql
+-- 1. 定义一包，包中定义游标
+create or replace package testpackage as
+  type test_cursor is ref cursor;
+end testpackage;
+
+```
+
 # 函数
 函数用于返回特点数据，头部必需要用return，一般返回一个值，使用 **create function** 创建函数
 ```sql

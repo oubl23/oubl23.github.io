@@ -22,6 +22,7 @@ update emp set sal=sal*1.1 where ename=spName;
 end if;
 end;
 ```
+<!--more-->
 # 循环
 ## loop -- end loop;
 ```sql
