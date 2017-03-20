@@ -31,6 +31,8 @@ SELECT  DISTINCT job FROM emp;
 SELECT 'A'||EMPNO||'B' FROM EMP;
 
 ```
+
+<!--more-->
 # 多表查询
 性能考虑，尽量回避多变查询
 ## 笛卡儿积

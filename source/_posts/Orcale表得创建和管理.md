@@ -45,7 +45,7 @@ DROP TABLE person [PURGE];
 3. 删除回收站 PURGE TABLE 表名称
 4. 清空回收站 PURGE RECYLEBIN
 
-
+<!--more-->
 ## 修改对象
 > ALTER 对象名称 ....
 

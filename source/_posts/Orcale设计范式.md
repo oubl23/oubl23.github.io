@@ -44,7 +44,7 @@ CREATE TABLE SEKECT_COURSE(
   加入外键
 )
 ```
-
+<!--more-->
 # 第三范式
 >一对多的设计
 

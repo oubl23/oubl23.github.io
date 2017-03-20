@@ -20,6 +20,7 @@ tags: ['orcale','pl/sql']
 ## 缺点
 1. 移植性不好，只是适用orcale
 
+<!--more-->
 ## 开发工具
 1. sql_plus
 2. pl/sql developer

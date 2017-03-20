@@ -23,7 +23,7 @@ CREATE USER 用户名 IDENTIFIED BY 密码
  GRANT CREATE SESSION TO TEST; //创建session权限
  GRANT CONNECT, RESOURCE TO TEST;
  ```
-
+<!--more-->
 ## 一次性赋予多权限
 
 ### CONNECT 连接权限
