@@ -18,6 +18,5 @@ web服务器，nodejs下的web服务器引擎
 # bower
 包管理，方便的管理外部扩展如angularjs，bootstrap
 
-# 
 
 
