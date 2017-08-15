@@ -6,7 +6,7 @@
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "skill"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -36,6 +36,7 @@ menu:
   # about: /about
   archives: /archives
   tags: /tags
+  daily: /categories/daily
   #sitemap: /sitemap.xml
   #commonweal: /404.html
 
@@ -54,7 +55,7 @@ menu_icons:
   schedule: calendar
   tags: tags
   archives: archive
-  sitemap: sitemap
+  daily: sitemap
   commonweal: heartbeat
 
 
@@ -65,9 +66,9 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-#scheme: Muse
+scheme: Muse
 #scheme: Mist
-scheme: Pisces
+#scheme: Pisces
 
 
 # ---------------------------------------------------------------
