@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="oracle,规范," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一范式 每个字段不可再分，每个列有意义 建立所以的数据可能过于冗余，可用对应关系解决。  12345678CREATE TABLE STUDENT_COURSE(  STUNO VARCHAR2(50) PRIMARY KEY NOT NULL,  STUNAME VARCHAR2(50),  STUAGE NUMBER,  COURSENAME VARCHAR2(50),  REDIT NUM">
+<meta name="keywords" content="oracle,规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle设计范式">
+<meta property="og:url" content="http://oubl23.github.io/2017/03/17/Oracle/Oracle设计范式/index.html">
+<meta property="og:site_name" content="o0U">
+<meta property="og:description" content="第一范式 每个字段不可再分，每个列有意义 建立所以的数据可能过于冗余，可用对应关系解决。  12345678CREATE TABLE STUDENT_COURSE(  STUNO VARCHAR2(50) PRIMARY KEY NOT NULL,  STUNAME VARCHAR2(50),  STUAGE NUMBER,  COURSENAME VARCHAR2(50),  REDIT NUM">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-11T00:16:13.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle设计范式">
+<meta name="twitter:description" content="第一范式 每个字段不可再分，每个列有意义 建立所以的数据可能过于冗余，可用对应关系解决。  12345678CREATE TABLE STUDENT_COURSE(  STUNO VARCHAR2(50) PRIMARY KEY NOT NULL,  STUNAME VARCHAR2(50),  STUAGE NUMBER,  COURSENAME VARCHAR2(50),  REDIT NUM">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '7XAVTWF8VM',
+      apiKey: 'd61827753f34f2628292f40ce59f4a6d',
+      indexName: 'hexo',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://oubl23.github.io/2017/03/17/Oracle/Oracle设计范式/"/>
+
+
+
+
+
+  <title>Oracle设计范式 | o0U</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">o0U</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-daily">
+          <a href="/categories/daily" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            daily
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oubl23.github.io/2017/03/17/Oracle/Oracle设计范式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="o0U">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="o0U">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Oracle设计范式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T15:21:54+00:00">
+                2017-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h1><ol>
+<li>每个字段不可再分，每个列有意义</li>
+<li>建立所以的数据可能过于冗余，可用对应关系解决。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> STUDENT_COURSE(</div><div class="line">  STUNO VARCHAR2(<span class="number">50</span>) PRIMARY <span class="keyword">KEY</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  STUNAME VARCHAR2(<span class="number">50</span>),</div><div class="line">  STUAGE <span class="built_in">NUMBER</span>,</div><div class="line">  COURSENAME VARCHAR2(<span class="number">50</span>),</div><div class="line">  REDIT <span class="built_in">NUMBER</span>,</div><div class="line">  GRADE <span class="built_in">NUMBER</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<h1 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h1><blockquote>
+<p>建立对应关系分别存储</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> STUDENT (</div><div class="line">  STUNO VARCHAR2(<span class="number">50</span>) PRIMARY <span class="keyword">KEY</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  STUNAME VARCHAR2(<span class="number">50</span>),</div><div class="line">  STUAGE <span class="built_in">NUMBER</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> COURSE(</div><div class="line">  CI <span class="built_in">NUMBER</span>(<span class="number">5</span>) PRIMARY <span class="keyword">KEY</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  CNAME VARCHAR2(<span class="number">50</span>),</div><div class="line">  CREDIT <span class="built_in">NUMBER</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> SEKECT_COURSE(</div><div class="line">  STUNO VARCHAR2(<span class="number">50</span>),</div><div class="line">  CID <span class="built_in">NUMBER</span>(<span class="number">5</span>),</div><div class="line">  GRADE <span class="built_in">NUMBER</span>,</div><div class="line">  加入外键</div><div class="line">)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h1><blockquote>
+<p>一对多的设计</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> COLLEGE(</div><div class="line">  CID <span class="built_in">NUMBER</span>(<span class="number">4</span>) PRIMARY <span class="keyword">KEY</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  CNAME VARCHAR2(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  CADDRESS VARCHAR2(<span class="number">200</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  CTEL VARCHAR2(<span class="number">200</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></div><div class="line">);</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> STUDENT (</div><div class="line">  STUNO VARCHAR2(<span class="number">50</span>) PRIMARY <span class="keyword">KEY</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  STUNAME VARCHA2(<span class="number">5</span>)),</div><div class="line">  STUAGE <span class="built_in">NUMBER</span>,</div><div class="line">  CID <span class="built_in">NUMBER</span>(<span class="number">4</span>),</div><div class="line">  建立主外键关系</div><div class="line">)</div></pre></td></tr></table></figure>
+<h1 id="唯一范式"><a href="#唯一范式" class="headerlink" title="唯一范式"></a>唯一范式</h1><ol>
+<li>数据库的关联越少愈好，sql语句的复杂越低越好。</li>
+</ol>
+<h1 id="数据库设计工具"><a href="#数据库设计工具" class="headerlink" title="数据库设计工具"></a>数据库设计工具</h1><h2 id="sybase"><a href="#sybase" class="headerlink" title="sybase"></a>sybase</h2><h2 id="powerdesigner"><a href="#powerdesigner" class="headerlink" title="powerdesigner"></a>powerdesigner</h2><ol>
+<li>选择物理数据模型</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
+          
+            <a href="/tags/规范/" rel="tag"># 规范</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/17/Oracle/Oracle数据库备份恢复/" rel="next" title="Oracle数据库备份恢复">
+                <i class="fa fa-chevron-left"></i> Oracle数据库备份恢复
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/19/Oracle/Oracle索引/" rel="prev" title="Oracle索引">
+                Oracle索引 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">o0U</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一范式"><span class="nav-number">1.</span> <span class="nav-text">第一范式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二范式"><span class="nav-number">2.</span> <span class="nav-text">第二范式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三范式"><span class="nav-number">3.</span> <span class="nav-text">第三范式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#唯一范式"><span class="nav-number">4.</span> <span class="nav-text">唯一范式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库设计工具"><span class="nav-number">5.</span> <span class="nav-text">数据库设计工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sybase"><span class="nav-number">5.1.</span> <span class="nav-text">sybase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#powerdesigner"><span class="nav-number">5.2.</span> <span class="nav-text">powerdesigner</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">o0U</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

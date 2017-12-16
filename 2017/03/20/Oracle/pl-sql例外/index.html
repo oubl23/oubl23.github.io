@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="例外处理no_data_found1234567v_ename emp.ename%type;beginselect ename  into v_ename from emp where empno=&amp;amp;gno;dbms_output.put_line(&apos;名字：&apos;||v_ename);exception  when no_data_found then  dbms_output.put_li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pl&#x2F;sql例外">
+<meta property="og:url" content="http://oubl23.github.io/2017/03/20/Oracle/pl-sql例外/index.html">
+<meta property="og:site_name" content="o0U">
+<meta property="og:description" content="例外处理no_data_found1234567v_ename emp.ename%type;beginselect ename  into v_ename from emp where empno=&amp;amp;gno;dbms_output.put_line(&apos;名字：&apos;||v_ename);exception  when no_data_found then  dbms_output.put_li">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-11T00:16:13.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pl&#x2F;sql例外">
+<meta name="twitter:description" content="例外处理no_data_found1234567v_ename emp.ename%type;beginselect ename  into v_ename from emp where empno=&amp;amp;gno;dbms_output.put_line(&apos;名字：&apos;||v_ename);exception  when no_data_found then  dbms_output.put_li">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '7XAVTWF8VM',
+      apiKey: 'd61827753f34f2628292f40ce59f4a6d',
+      indexName: 'hexo',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://oubl23.github.io/2017/03/20/Oracle/pl-sql例外/"/>
+
+
+
+
+
+  <title>pl/sql例外 | o0U</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">o0U</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-daily">
+          <a href="/categories/daily" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            daily
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oubl23.github.io/2017/03/20/Oracle/pl-sql例外/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="o0U">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="o0U">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">pl/sql例外</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T16:58:03+00:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="例外处理"><a href="#例外处理" class="headerlink" title="例外处理"></a>例外处理</h1><h2 id="no-data-found"><a href="#no-data-found" class="headerlink" title="no_data_found"></a>no_data_found</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">v_ename emp.ename%type;</div><div class="line"><span class="keyword">begin</span></div><div class="line"><span class="keyword">select</span> ename  <span class="keyword">into</span> v_ename <span class="keyword">from</span> emp <span class="keyword">where</span> empno=&amp;gno;</div><div class="line">dbms_output.put_line('名字：'||v_ename);</div><div class="line">exception</div><div class="line">  when no_data_found then</div><div class="line">  dbms_output.put_line('编号不存在!');</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="case-not-found"><a href="#case-not-found" class="headerlink" title="case_not_found"></a>case_not_found</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">create or replace procedure sp_pro6(spno number)is</div><div class="line">  v_sal emp.sal%type;</div><div class="line">begin</div><div class="line">  select sal into v_sal from emp where empno=spno;</div><div class="line">  case</div><div class="line">  when v_sal&lt;1000 then</div><div class="line">    update emp set sal=sal+100 where empno=spno;</div><div class="line">  when v_sal&lt;2000 then</div><div class="line">    update emp set sal=sal+200 where empno=spno;</div><div class="line">  end cas;</div><div class="line">exception</div><div class="line">  when case_not_found then</div><div class="line">  dbms_output.put_line(v_sal);</div></pre></td></tr></table></figure>
+<h2 id="cursor-already-open"><a href="#cursor-already-open" class="headerlink" title="cursor_already_open"></a>cursor_already_open</h2><h2 id="dup-val-on-index"><a href="#dup-val-on-index" class="headerlink" title="dup_val_on_index"></a>dup_val_on_index</h2><p>unquie字段适合会引发</p>
+<h2 id="invaild-cursor"><a href="#invaild-cursor" class="headerlink" title="invaild_cursor"></a>invaild_cursor</h2><p>试图从打开的游标提取数据，或者关闭没有打开的游标</p>
+<h2 id="invaild-number"><a href="#invaild-number" class="headerlink" title="invaild_number"></a>invaild_number</h2><p>输入数据有误</p>
+<h2 id="too-many-rows"><a href="#too-many-rows" class="headerlink" title="too_many_rows"></a>too_many_rows</h2><p>执行select into 语句的时候，返回多行</p>
+<h2 id="zero-divide"><a href="#zero-divide" class="headerlink" title="zero_divide"></a>zero_divide</h2><p>当进行除数是0的除法操作的时候会引发</p>
+<h2 id="value-error"><a href="#value-error" class="headerlink" title="value_error"></a>value_error</h2><p>变量长度超出范围</p>
+<h1 id="自定义例外"><a href="#自定义例外" class="headerlink" title="自定义例外"></a>自定义例外</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">procedure</span> ex_test(spNo <span class="built_in">number</span>) <span class="keyword">is</span></div><div class="line">myex <span class="keyword">exception</span>;</div><div class="line"><span class="keyword">begin</span></div><div class="line">  <span class="keyword">update</span> emp <span class="keyword">set</span> sal=sal+<span class="number">1000</span> <span class="keyword">where</span> empno=spNo;</div><div class="line"></div><div class="line">  if sql%notfound then</div><div class="line">  raise myex;</div><div class="line">  <span class="keyword">end</span> <span class="keyword">if</span>;</div><div class="line">exception</div><div class="line"> when myex then</div><div class="line"> dbms_output.put_line('没有更新任何用户');</div><div class="line"><span class="keyword">end</span>;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/20/Oracle/pl-sql控制语句/" rel="next" title="pl/sql控制语句">
+                <i class="fa fa-chevron-left"></i> pl/sql控制语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/22/ffcs流程表单开发/" rel="prev" title="ffcs流程表单开发">
+                ffcs流程表单开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">o0U</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#例外处理"><span class="nav-number">1.</span> <span class="nav-text">例外处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#no-data-found"><span class="nav-number">1.1.</span> <span class="nav-text">no_data_found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#case-not-found"><span class="nav-number">1.2.</span> <span class="nav-text">case_not_found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cursor-already-open"><span class="nav-number">1.3.</span> <span class="nav-text">cursor_already_open</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dup-val-on-index"><span class="nav-number">1.4.</span> <span class="nav-text">dup_val_on_index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invaild-cursor"><span class="nav-number">1.5.</span> <span class="nav-text">invaild_cursor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invaild-number"><span class="nav-number">1.6.</span> <span class="nav-text">invaild_number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#too-many-rows"><span class="nav-number">1.7.</span> <span class="nav-text">too_many_rows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zero-divide"><span class="nav-number">1.8.</span> <span class="nav-text">zero_divide</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-error"><span class="nav-number">1.9.</span> <span class="nav-text">value_error</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义例外"><span class="nav-number">2.</span> <span class="nav-text">自定义例外</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">o0U</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="访问url 查询部分：http://localhost:7001/workshop/query/show_result.html?result=8889&amp;amp;sid=LHSP-20160914-00002 完整部分: http://localhost:7001/workshop/queryTemplate/TemplateDemo.html?panel=8889&amp;amp;grid=8889查询">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ffcs报表开发">
+<meta property="og:url" content="http://oubl23.github.io/2017/03/23/ffcs报表开发/index.html">
+<meta property="og:site_name" content="o0U">
+<meta property="og:description" content="访问url 查询部分：http://localhost:7001/workshop/query/show_result.html?result=8889&amp;amp;sid=LHSP-20160914-00002 完整部分: http://localhost:7001/workshop/queryTemplate/TemplateDemo.html?panel=8889&amp;amp;grid=8889查询">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-11T00:16:13.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ffcs报表开发">
+<meta name="twitter:description" content="访问url 查询部分：http://localhost:7001/workshop/query/show_result.html?result=8889&amp;amp;sid=LHSP-20160914-00002 完整部分: http://localhost:7001/workshop/queryTemplate/TemplateDemo.html?panel=8889&amp;amp;grid=8889查询">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '7XAVTWF8VM',
+      apiKey: 'd61827753f34f2628292f40ce59f4a6d',
+      indexName: 'hexo',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://oubl23.github.io/2017/03/23/ffcs报表开发/"/>
+
+
+
+
+
+  <title>ffcs报表开发 | o0U</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">o0U</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-daily">
+          <a href="/categories/daily" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            daily
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oubl23.github.io/2017/03/23/ffcs报表开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="o0U">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="o0U">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ffcs报表开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T17:32:54+00:00">
+                2017-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ffcs/" itemprop="url" rel="index">
+                    <span itemprop="name">ffcs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="访问url"><a href="#访问url" class="headerlink" title="访问url"></a>访问url</h1><ol>
+<li>查询部分：<a href="http://localhost:7001/workshop/query/show_result.html?result=8889&amp;sid=LHSP-20160914-00002" target="_blank" rel="external">http://localhost:7001/workshop/query/show_result.html?result=8889&amp;sid=LHSP-20160914-00002</a></li>
+<li>完整部分: <a href="http://localhost:7001/workshop/queryTemplate/TemplateDemo.html?panel=8889&amp;grid=8889" target="_blank" rel="external">http://localhost:7001/workshop/queryTemplate/TemplateDemo.html?panel=8889&amp;grid=8889</a><h1 id="查询数据部分"><a href="#查询数据部分" class="headerlink" title="查询数据部分"></a>查询数据部分</h1><h2 id="sql-cfg"><a href="#sql-cfg" class="headerlink" title="sql_cfg"></a>sql_cfg</h2>sql_text 里面存了查询语句用查询数据库的数据</li>
+</ol>
+<h2 id="Sql-Param-Cfg"><a href="#Sql-Param-Cfg" class="headerlink" title="Sql_Param_Cfg"></a>Sql_Param_Cfg</h2><p>配置查询使用得sql参数，绑定查询参数</p>
+<h2 id="get-value-cfg-field"><a href="#get-value-cfg-field" class="headerlink" title="get_value_cfg_field"></a>get_value_cfg_field</h2><p>配置显示的字段</p>
+<h2 id="get-value-cfg"><a href="#get-value-cfg" class="headerlink" title="get_value_cfg"></a>get_value_cfg</h2><p>配置页面显示的 grid参数,绑定sql_cfg</p>
+<h2 id="get-value-show-cfg"><a href="#get-value-show-cfg" class="headerlink" title="get_value_show_cfg"></a>get_value_show_cfg</h2><p>配置表格显示的样式</p>
+<h1 id="自定义面板部分"><a href="#自定义面板部分" class="headerlink" title="自定义面板部分"></a>自定义面板部分</h1><h2 id="BASE-PANEL"><a href="#BASE-PANEL" class="headerlink" title="BASE_PANEL"></a>BASE_PANEL</h2><p>创建面板</p>
+<h2 id="PANEL-TOOLBAR"><a href="#PANEL-TOOLBAR" class="headerlink" title="PANEL_TOOLBAR"></a>PANEL_TOOLBAR</h2><p>创建工具栏</p>
+<h2 id="PANEL-TOOLBAR-CFG"><a href="#PANEL-TOOLBAR-CFG" class="headerlink" title="PANEL_TOOLBAR_CFG"></a>PANEL_TOOLBAR_CFG</h2><p>BASE_PANEL  和 PANEL_TOOLBAR绑定</p>
+<h2 id="PARAM-COMPONENT"><a href="#PARAM-COMPONENT" class="headerlink" title="PARAM_COMPONENT"></a>PARAM_COMPONENT</h2><p>配置查询控件中，可以使用sql语句填充参数</p>
+<h2 id="PANEL-TOOLBAR-BY-PARAM"><a href="#PANEL-TOOLBAR-BY-PARAM" class="headerlink" title="PANEL_TOOLBAR_BY_PARAM"></a>PANEL_TOOLBAR_BY_PARAM</h2><p>PARAM_COMPONENT 和 PANEL_TOOLBAR 绑定</p>
+<h2 id="PANEL-TOOLBAR-BY-MENU"><a href="#PANEL-TOOLBAR-BY-MENU" class="headerlink" title="PANEL_TOOLBAR_BY_MENU;"></a>PANEL_TOOLBAR_BY_MENU;</h2><p>未用到</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/22/javascript/nodejs开发/" rel="next" title="nodejs开发">
+                <i class="fa fa-chevron-left"></i> nodejs开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/23/javascript/angularjs编程/" rel="prev" title="angularjs">
+                angularjs <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">o0U</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#访问url"><span class="nav-number">1.</span> <span class="nav-text">访问url</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询数据部分"><span class="nav-number">2.</span> <span class="nav-text">查询数据部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sql-cfg"><span class="nav-number">2.1.</span> <span class="nav-text">sql_cfg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sql-Param-Cfg"><span class="nav-number">2.2.</span> <span class="nav-text">Sql_Param_Cfg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-value-cfg-field"><span class="nav-number">2.3.</span> <span class="nav-text">get_value_cfg_field</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-value-cfg"><span class="nav-number">2.4.</span> <span class="nav-text">get_value_cfg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-value-show-cfg"><span class="nav-number">2.5.</span> <span class="nav-text">get_value_show_cfg</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义面板部分"><span class="nav-number">3.</span> <span class="nav-text">自定义面板部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BASE-PANEL"><span class="nav-number">3.1.</span> <span class="nav-text">BASE_PANEL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PANEL-TOOLBAR"><span class="nav-number">3.2.</span> <span class="nav-text">PANEL_TOOLBAR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PANEL-TOOLBAR-CFG"><span class="nav-number">3.3.</span> <span class="nav-text">PANEL_TOOLBAR_CFG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PARAM-COMPONENT"><span class="nav-number">3.4.</span> <span class="nav-text">PARAM_COMPONENT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PANEL-TOOLBAR-BY-PARAM"><span class="nav-number">3.5.</span> <span class="nav-text">PANEL_TOOLBAR_BY_PARAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PANEL-TOOLBAR-BY-MENU"><span class="nav-number">3.6.</span> <span class="nav-text">PANEL_TOOLBAR_BY_MENU;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">o0U</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

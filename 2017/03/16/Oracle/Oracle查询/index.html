@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="oracle,sql," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基本查询语法1234567891011select [DISTINCT] * | 分组字段1 [别名] [,分组字段2 [别名],...] | 统计字段from 表名称 [别名],[表名词 [别名],...][where 条件...]//分组前的过滤,不能使用统计函数[group by 分组字段1, [分组字段2], ...][having 分组后的额过滤函数，可以使用分组统计 函数] //分组后">
+<meta name="keywords" content="oracle,sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle查询">
+<meta property="og:url" content="http://oubl23.github.io/2017/03/16/Oracle/Oracle查询/index.html">
+<meta property="og:site_name" content="o0U">
+<meta property="og:description" content="基本查询语法1234567891011select [DISTINCT] * | 分组字段1 [别名] [,分组字段2 [别名],...] | 统计字段from 表名称 [别名],[表名词 [别名],...][where 条件...]//分组前的过滤,不能使用统计函数[group by 分组字段1, [分组字段2], ...][having 分组后的额过滤函数，可以使用分组统计 函数] //分组后">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-11T00:16:13.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle查询">
+<meta name="twitter:description" content="基本查询语法1234567891011select [DISTINCT] * | 分组字段1 [别名] [,分组字段2 [别名],...] | 统计字段from 表名称 [别名],[表名词 [别名],...][where 条件...]//分组前的过滤,不能使用统计函数[group by 分组字段1, [分组字段2], ...][having 分组后的额过滤函数，可以使用分组统计 函数] //分组后">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '7XAVTWF8VM',
+      apiKey: 'd61827753f34f2628292f40ce59f4a6d',
+      indexName: 'hexo',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://oubl23.github.io/2017/03/16/Oracle/Oracle查询/"/>
+
+
+
+
+
+  <title>Oracle查询 | o0U</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">o0U</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-daily">
+          <a href="/categories/daily" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            daily
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oubl23.github.io/2017/03/16/Oracle/Oracle查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="o0U">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="o0U">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Oracle查询</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-16T14:46:12+00:00">
+                2017-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基本查询语法"><a href="#基本查询语法" class="headerlink" title="基本查询语法"></a>基本查询语法</h1><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">select [DISTINCT] * | 分组字段1 [别名] [,分组字段2 [别名],...] | 统计字段</div><div class="line">from 表名称 [别名],[表名词 [别名],...]</div><div class="line">[where 条件...]//分组前的过滤,不能使用统计函数</div><div class="line">[group by 分组字段1, [分组字段2], ...]</div><div class="line">[having 分组后的额过滤函数，可以使用分组统计 函数] //分组后的再次过滤</div><div class="line">[order by 排序字段 ASC|DESC [排序字段 ASC|DESC ...]];</div><div class="line"></div><div class="line">## 使用分组后的限定条件</div><div class="line">1. 分组函数可以单独用，后面不能出现其他字段</div><div class="line">2. 字段分组后，只能出现分组的字段和统计函数，不能出现其他字段</div><div class="line">3. 分组允许嵌套，但是分组之后不能出现任何其他字段</div></pre></td></tr></table></figure>
+<h1 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h1><h2 id="消除列重复-DISTINCT"><a href="#消除列重复-DISTINCT" class="headerlink" title="消除列重复-DISTINCT"></a>消除列重复-DISTINCT</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span>  <span class="keyword">DISTINCT</span> job <span class="keyword">FROM</span> emp;</div></pre></td></tr></table></figure>
+<h2 id="语句拼接"><a href="#语句拼接" class="headerlink" title="语句拼接"></a>语句拼接</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="string">'A'</span>||EMPNO||<span class="string">'B'</span> <span class="keyword">FROM</span> EMP;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h1><p>性能考虑，尽量回避多变查询</p>
+<h2 id="笛卡儿积"><a href="#笛卡儿积" class="headerlink" title="笛卡儿积"></a>笛卡儿积</h2><h3 id="产生效果"><a href="#产生效果" class="headerlink" title="产生效果"></a>产生效果</h3><p>两表查询会产生两表相乘的数据，多于我们需要的数据<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span>  * <span class="keyword">from</span> dept,emp;</div></pre></td></tr></table></figure></p>
+<h3 id="消除笛卡儿积"><a href="#消除笛卡儿积" class="headerlink" title="消除笛卡儿积"></a>消除笛卡儿积</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dept,emp <span class="keyword">where</span> emp.deptno = dept.deptno;</div><div class="line">//值只是显示上消除，查询中还存在，性能很差，有笛卡儿积问题</div></pre></td></tr></table></figure>
+<h2 id="他表关联"><a href="#他表关联" class="headerlink" title="他表关联"></a>他表关联</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dept,emp <span class="keyword">where</span> emp.deptno = dept.deptno;</div></pre></td></tr></table></figure>
+<h2 id="自表关联"><a href="#自表关联" class="headerlink" title="自表关联"></a>自表关联</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp e ,emp m <span class="keyword">where</span> e.mgr = m.empno;</div></pre></td></tr></table></figure>
+<h2 id="两个以上关联条件"><a href="#两个以上关联条件" class="headerlink" title="两个以上关联条件"></a>两个以上关联条件</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> e.empno,m.name ,d.loc</div><div class="line"><span class="keyword">from</span> emp e ,emp m , dept d</div><div class="line"><span class="keyword">where</span> e.mgr = m.empno <span class="keyword">and</span> e.deptno = d.deptno;</div></pre></td></tr></table></figure>
+<h2 id="between-and-关联"><a href="#between-and-关联" class="headerlink" title="between and 关联"></a>between and 关联</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> e.empno,e.sal,m.name ,d.loc</div><div class="line"><span class="keyword">from</span> emp e ,emp m , salgrade s</div><div class="line"><span class="keyword">where</span> e.mgr = m.empno <span class="keyword">and</span> e.sal <span class="keyword">between</span> s.losal <span class="keyword">and</span> s.hisal;</div></pre></td></tr></table></figure>
+<h2 id="左右连接"><a href="#左右连接" class="headerlink" title="左右连接"></a>左右连接</h2><p>即查询的参考点，比如我要查询出A的所有数据与之关联的B为空也无所谓</p>
+<ol>
+<li>(+)= :这是右边连接</li>
+<li>=(+) :这是左连接<br><strong>注意这是orcale独有的其他数据库如mysql参考sql1999语法</strong></li>
+</ol>
+<h2 id="sql1999-连接"><a href="#sql1999-连接" class="headerlink" title="sql1999 连接"></a>sql1999 连接</h2><h3 id="交叉连接-CROSS-JOIN"><a href="#交叉连接-CROSS-JOIN" class="headerlink" title="交叉连接(CROSS JOIN)"></a>交叉连接(CROSS JOIN)</h3><p>用于产生笛卡儿积<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> DEPT;</div></pre></td></tr></table></figure></p>
+<h3 id="自然连接-NATURAL-JOIN"><a href="#自然连接-NATURAL-JOIN" class="headerlink" title="自然连接(NATURAL JOIN)"></a>自然连接(NATURAL JOIN)</h3><p>自动查找关联字段<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> DEPT;</div></pre></td></tr></table></figure></p>
+<h3 id="JOIN-…-USING"><a href="#JOIN-…-USING" class="headerlink" title="JOIN …. USING"></a>JOIN …. USING</h3><p>用户指定关联字段<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp  <span class="keyword">JOIN</span> DEPT <span class="keyword">USING</span>(deptno);</div></pre></td></tr></table></figure></p>
+<h3 id="JOIN-…-ON"><a href="#JOIN-…-ON" class="headerlink" title="JOIN …. ON"></a>JOIN …. ON</h3><p>用户指定关联条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp <span class="keyword">JOIN</span> DEPT <span class="keyword">USING</span>(emp.deptno = dept.deptno);</div></pre></td></tr></table></figure></p>
+<h3 id="连接方向改变"><a href="#连接方向改变" class="headerlink" title="连接方向改变"></a>连接方向改变</h3><ol>
+<li>左（外）连接：LEFT OUTER JOIN …. ON;</li>
+<li>右（外）连接：RIGHT OUTER JOIN … ON;</li>
+<li>全（外）连接：FULL OUTER JOIN …. ON;<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">join</span> dept <span class="keyword">on</span>(emp.deptno = dept.deptno);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="多表查询补充"><a href="#多表查询补充" class="headerlink" title="多表查询补充"></a>多表查询补充</h2><h3 id="查询表"><a href="#查询表" class="headerlink" title="查询表"></a>查询表</h3><ol>
+<li><p>做法一：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp;</div></pre></td></tr></table></figure>
+</li>
+<li><p>做法二：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> emp;</div><div class="line">//然后决定如何查询，推荐</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><h2 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h2><p>子查询一般只返回单行单列、多行单列、单行多列的数据；</p>
+<h3 id="单行单列"><a href="#单行单列" class="headerlink" title="单行单列"></a>单行单列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> sal &gt; (<span class="keyword">select</span> <span class="keyword">avg</span>(sal) <span class="keyword">from</span> emp);</div></pre></td></tr></table></figure>
+<h2 id="多行单列"><a href="#多行单列" class="headerlink" title="多行单列"></a>多行单列</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> (job, sal)</div><div class="line"> = (<span class="keyword">select</span> job,sal <span class="keyword">from</span> emp <span class="keyword">where</span> ename = <span class="string">"ALLEN"</span>)</div></pre></td></tr></table></figure>
+<h2 id="单行多列"><a href="#单行多列" class="headerlink" title="单行多列"></a>单行多列</h2><ol>
+<li>in(=any)</li>
+<li>(&gt;any 大于其中最小) (&lt;any 小于其中最大)</li>
+<li>(&gt;all 大于其中最大) (&lt;all 小于其中最小)</li>
+</ol>
+<h2 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h2><p>子查询返回的一般是多行多列的数据，当作一张临时表出现<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> d.deptno,d.dname,d.loc,temp.count,temp.avg</div><div class="line"><span class="keyword">from</span> dept t (</div><div class="line">  <span class="keyword">select</span> deptno dno ,<span class="keyword">count</span>(empno) <span class="keyword">count</span> ,<span class="keyword">avg</span>(sal) <span class="keyword">avg</span></div><div class="line">  <span class="keyword">from</span> emp</div><div class="line">  groupby deptno)temp</div><div class="line">  <span class="keyword">where</span> d.deptno(+) = temp.dno</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/16/Oracle/Oracle语句和函数/" rel="next" title="Oracle语句和函数">
+                <i class="fa fa-chevron-left"></i> Oracle语句和函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/16/Oracle/Oracle事务/" rel="prev" title="Oracle事务">
+                Oracle事务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">o0U</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本查询语法"><span class="nav-number">1.</span> <span class="nav-text">基本查询语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单查询"><span class="nav-number">2.</span> <span class="nav-text">简单查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#消除列重复-DISTINCT"><span class="nav-number">2.1.</span> <span class="nav-text">消除列重复-DISTINCT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句拼接"><span class="nav-number">2.2.</span> <span class="nav-text">语句拼接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多表查询"><span class="nav-number">3.</span> <span class="nav-text">多表查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#笛卡儿积"><span class="nav-number">3.1.</span> <span class="nav-text">笛卡儿积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产生效果"><span class="nav-number">3.1.1.</span> <span class="nav-text">产生效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消除笛卡儿积"><span class="nav-number">3.1.2.</span> <span class="nav-text">消除笛卡儿积</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#他表关联"><span class="nav-number">3.2.</span> <span class="nav-text">他表关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自表关联"><span class="nav-number">3.3.</span> <span class="nav-text">自表关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个以上关联条件"><span class="nav-number">3.4.</span> <span class="nav-text">两个以上关联条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#between-and-关联"><span class="nav-number">3.5.</span> <span class="nav-text">between and 关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左右连接"><span class="nav-number">3.6.</span> <span class="nav-text">左右连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql1999-连接"><span class="nav-number">3.7.</span> <span class="nav-text">sql1999 连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉连接-CROSS-JOIN"><span class="nav-number">3.7.1.</span> <span class="nav-text">交叉连接(CROSS JOIN)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自然连接-NATURAL-JOIN"><span class="nav-number">3.7.2.</span> <span class="nav-text">自然连接(NATURAL JOIN)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JOIN-…-USING"><span class="nav-number">3.7.3.</span> <span class="nav-text">JOIN …. USING</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JOIN-…-ON"><span class="nav-number">3.7.4.</span> <span class="nav-text">JOIN …. ON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接方向改变"><span class="nav-number">3.7.5.</span> <span class="nav-text">连接方向改变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多表查询补充"><span class="nav-number">3.8.</span> <span class="nav-text">多表查询补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询表"><span class="nav-number">3.8.1.</span> <span class="nav-text">查询表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子查询"><span class="nav-number">4.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WHERE"><span class="nav-number">4.1.</span> <span class="nav-text">WHERE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单行单列"><span class="nav-number">4.1.1.</span> <span class="nav-text">单行单列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行单列"><span class="nav-number">4.2.</span> <span class="nav-text">多行单列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单行多列"><span class="nav-number">4.3.</span> <span class="nav-text">单行多列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FROM"><span class="nav-number">4.4.</span> <span class="nav-text">FROM</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">o0U</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
