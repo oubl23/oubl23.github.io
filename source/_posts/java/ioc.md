@@ -2,7 +2,9 @@
 title: spirng基本概念
 date: 2017-12-16 17:32:54
 categories: java
-tags:spring,java
+tags: 
+    - spring
+    - java
 ---
 ## ioc
 控制反转：将创建bean维护bean之间的关系的控制权从程序中转移到spring容器中（applicationContext.xml)中
